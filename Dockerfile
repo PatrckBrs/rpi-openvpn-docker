@@ -10,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive ;\
 apt-get update && \
 apt-get install --assume-yes \
     openvpn \
+    ntp \
     wget && \
     rm -rf /var/lib/apt/lists/*
     
