@@ -1,6 +1,10 @@
 # Dockerfile Raspberry Pi OpenVPN
 FROM resin/rpi-raspbian:latest
 
+ENV LANG fr_FR.UTF-8
+ENV LANGUAGE fr_FR:fr
+ENV LC_ALL fr_FR.UTF-8
+
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
 apt-get update && \
@@ -15,8 +19,11 @@ RUN echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/
 RUN mkdir -p /var/log/supervisor
 COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+VOLUME ["/etc/openvpn"]
+WORKDIR /etc/openvpn
+
 # Ports 
-EXPOSE 80 443
+EXPOSE 1194 1194/udp
 
 # Boot up container
 CMD ["/usr/bin/supervisord"]
