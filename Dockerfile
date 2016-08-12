@@ -2,10 +2,10 @@
 FROM resin/rpi-raspbian:latest
 
 # Gen Local FR
-RUN locale-gen fr_FR.UTF-8 
-ENV LANG fr_FR.UTF-8
-ENV LANGUAGE fr_FR:fr
-ENV LC_ALL fr_FR.UTF-8
+#RUN locale-gen fr_FR.UTF-8 
+#ENV LANG fr_FR.UTF-8
+#ENV LANGUAGE fr_FR:fr
+#ENV LC_ALL fr_FR.UTF-8
 
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
